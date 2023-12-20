@@ -9,22 +9,27 @@
   min-width: 100vw;
 
   min-height: 100vh;
-
-  background: linear-gradient(rgb(166, 159, 255), rgb(214, 214, 214));
+  background-image: url("../src/Components/images/bg.jpg");
+/* 
+  background: linear-gradient(rgb(166, 159, 255), rgb(214, 214, 214)); */
 }
-
+.bg-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
 .loginContainer {
   display: flex;
 
   flex-direction: column;
 
   align-items: center;
-
+  
   width: 25em;
-
+  color: white;
   height: 60;
-
-  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+/* 
+background-color: rgb(255, 255, 255); */
 
   border-radius: 25px;
   padding-bottom: 20px;
@@ -56,7 +61,6 @@
   box-shadow: 0 0 6px rgb(166, 159, 255);
   outline: none;
   padding: 10px;
-  background: none;
   font-size: 16px;
   font-weight: 400;
 }
@@ -112,7 +116,10 @@ a {
   margin-top: 13px;
 }
 
-
+.dashboard-data {
+  display:flex;
+  justify-content:space-between
+}
 .table-wrapper {
   width: auto;
 }
@@ -145,7 +152,7 @@ a {
 
   border-collapse: collapse;
 
-  border-radius: 10px;
+  border-radius: 5px;
 
   white-space: nowrap;
 
@@ -153,14 +160,13 @@ a {
 
   max-width: 80%;
 
-  margin: auto;
+  margin: 40px auto 0 auto;
 
   overflow-x: auto;
 }
 
 .table thead {
-  background-color: #ccc;
-
+  background-color: #95A5A6;
   color: #222;
 }
 
@@ -172,7 +178,6 @@ a {
 }
 
 .table td {
-  border-top: 0.5px solid #ddd;
 
   overflow: hidden;
 
@@ -182,7 +187,7 @@ a {
 .table .thead-id {
   position: sticky;
   left: 0;
-  background: #ccc;
+  background: #95A5A6;
 }
 .table .tdata-id {
 position: sticky;
@@ -190,47 +195,16 @@ left: 0;
 background: white;
 }
 
-.table .tdata-id:hover {
-background-color: #eee;
+.table .tdata-id {
+background-color: #f2f2f2;
 }
-.table tbody tr:hover {
-  background-color: #eee;
-}
-.Navbar-Section {
-  background: #ddeeeb;
-}
-  .width-adjust {
-      max-width: 80%;
-      display: flex;
-      margin: auto;
-      color: black;
-      justify-content: space-between;
-      margin-bottom: 30px;
-  }
-  a{
-    color: #000;
-  }
-  .logo-adjust {
-    display: flex;
-  }
-.header {
-    text-align: center;
-    text-decoration-line: underline;
-}
- .icon-adjustment {
-    display: flex;
-    align-items: center;
-    align-self: auto;
-    color: black;
-    padding: 10px;
-}
-.search-icon {
-  background: white;
-  border-radius: 10px;
-  font-size: 22px;
-}
-.book-icon {
-  font-size: 25px ;
+
+.table tr:nth-child(even) {background-color: #eee;}
+.truncate td {
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .data-error {

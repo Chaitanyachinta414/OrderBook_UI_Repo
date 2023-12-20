@@ -99,9 +99,17 @@ const handlePrevPage =() => {
 }
 
     return (
-        <div className="container">
+        <div className="container reference-container">
+             <Header />
+             <div className='dashboard-data'>
+                <h1 className='header dashboard-header'>Dashboard</h1>
+                <div className='btn-adjustment'>    
+                    <Link to="/addnewreferencedata"><button className='btn-upload btn-space'>Add New Row</button></Link>
+                    <Link to="/orderbookfileupload"><button className='btn-upload'>Orderbook File Upload Here</button></Link>
+                </div>
+             </div>
+           
         <div className='table-wrapper'>
-        <Header />
     {records?.length >0 ?
             (<table className='table'>
 
@@ -350,10 +358,6 @@ const handlePrevPage =() => {
                 </tbody>
              </table>):(<h2 className='data-error'>No Records Found</h2>)
 }
-        </div>
-        <div className='btn-adjustment'>    
-        <Link to="/addnewreferencedata"><button className='btn-upload btn-space'>Add New Row</button></Link>
-        <Link to="/orderbookfileupload"><button className='btn-upload'>Orderbook File Upload Here</button></Link>
         </div>
         {records.length >0 ? (<Pagination currentPage={currentPage} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage}/>):""}
     </div>

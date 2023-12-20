@@ -8,6 +8,7 @@ import UpdateRefData from './Components/UpdateRefData';
 import AddReferenceData from './Components/AddReferenceData';
 import UserLogin from './Components/Userlogin';
 import Search from './Components/Search';
+import About from './Components/About';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path='/updaterecords' Component={UpdateRefData} />
       <Route path='/addnewreferencedata' Component={AddReferenceData} />
       <Route path='/search' Component={Search} />
+      <Route path='/about' Component={About} />
     </Routes>
     </BrowserRouter>
 

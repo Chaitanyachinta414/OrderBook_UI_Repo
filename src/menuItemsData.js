@@ -23,6 +23,6 @@ export const menuItemsData = [
       },
       {
         title: 'About',
-        url: '/',
+        url: '/about',
       },
   ];

@@ -45,51 +45,52 @@ function UserLogin() {
   return (
 
     <div className='App'>
+        <div className='bg-overlay'>
+            <div className='loginContainer'>
 
-      <div className='loginContainer'>
+                <h1>Welcome!</h1>
 
-        <h1>Welcome!</h1>
+                <div className='input-container'>
 
- 
+                  <label>Username </label>
 
-        <div className='input-container'>
+                  <input type='text' value={username}
 
-          <label>Username </label>
+                    onChange={(e) => setUsername(e.target.value)} />
 
-          <input type='text' value={username}
+                </div>
 
-            onChange={(e) => setUsername(e.target.value)} />
+                  <div className='input-container'>
+
+                    <label>Password </label>
+
+                    <input type='password' value={password}
+
+                      onChange={(e) => setPassword(e.target.value)} />
+
+                  </div>
+                <div className="dropdown input-container">
+                  <label>Login as</label>
+                    <select onChange={handleChange} >
+                        <option value="">Select Login type</option>
+                        <option value="User">User</option>
+                        <option value="IBU_Head">IBU Head </option>
+                        <option value="PM">Program Manager </option>
+                    </select>
+                </div>
+
+
+                <button className='loginBut' onClick={()=>handleLogin(value)}><p>Login</p></button>
+
+                {error && (<p>{error}</p>)}
+
+
+                </div>
 
         </div>
 
-        <div className='input-container'>
-
-          <label>Password </label>
-
-          <input type='password' value={password}
-
-            onChange={(e) => setPassword(e.target.value)} />
-
-        </div>
-        <div className="dropdown input-container">
-          <label>Login as</label>
-            <select onChange={handleChange} >
-                <option value="">Select Login type</option>
-                <option value="User">User</option>
-                <option value="IBU_Head">IBU Head </option>
-                <option value="PM">Program Manager </option>
-            </select>
-        </div>
-
-
-        <button className='loginBut' onClick={()=>handleLogin(value)}><p>Login</p></button>
-       
-        {error && (<p>{error}</p>)}
-
-
-      </div>
-
-    </div>
+      
+     </div>
 
   );
 
