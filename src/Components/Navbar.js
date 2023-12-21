@@ -6,7 +6,7 @@ const Navbar = () => {
       <ul className="menus">
         {menuItemsData.map((items, index) => {   
            return(
-            <li className="menu-items">
+            <li key={index} className="menu-items">
             {items.submenu ? (
               <>
                    <button 

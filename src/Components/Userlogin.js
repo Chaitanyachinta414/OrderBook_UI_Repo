@@ -22,8 +22,10 @@ function UserLogin() {
       username: username,
       password: password,
     };
+    let loginJson= JSON.stringify(requestBody)
+    localStorage.setItem("LoginJSON",loginJson);
     
-    fetch("http://localhost:8080/api/users/login?requiredRole="+selectVal.toLowerCase(), {
+    fetch("http://localhost:8080/login?requiredRole="+selectVal.toLowerCase(), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

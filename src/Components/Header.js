@@ -3,9 +3,12 @@ import { TbLogout2 } from "react-icons/tb";
 import { GiBookAura } from "react-icons/gi";
 import { Link} from 'react-router-dom';
 
-
-
 const Header = () => {
+
+    const handleLogOut = () => {
+        localStorage.setItem("OrderbookRecords", null);
+        localStorage.setItem("LoginJSON", null);
+    }
 
     return (
         <div className='table-wrapper'>
@@ -16,7 +19,7 @@ const Header = () => {
                 <h2 className='header'>Orderbook</h2>
             </div>
             <div><Navbar /></div>
-            <Link to="/" className="icon-adjustment search-icon"><TbLogout2 />SignOut</Link>
+            <Link to="/" className="icon-adjustment search-icon" onClick={handleLogOut}><TbLogout2 />LogOut</Link>
         </div>
     </div>
     </div>

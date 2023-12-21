@@ -15,17 +15,23 @@ const ReferenceData = () => {
     const [recordsPerPage]= useState(10);
     let [clickCount, setClickCount]= useState(1);
     let [headerName, setHeaderName]= useState("");
-    let [sortOrder, setSortOrder] = useState("desc");   
+    let [sortOrder, setSortOrder] = useState("desc");
     
     useEffect(() => {
-        if(records) {
+         let tempStr = localStorage.getItem("LoginJSON");
+        let tempObj = JSON.parse(tempStr);
+        if(tempObj !== null) {
             fetch('http://localhost:8080/getOrderbook')
 
             .then(response => response.json())
 
             .then(data => {
                 setRecords(data)
+                let objValue= JSON.stringify(data)
+                localStorage.setItem("OrderbookRecords",objValue);
             })
+        } else {
+            setRecords(null);
         }
     // eslint-disable-next-line 
     },[]);
@@ -56,7 +62,7 @@ const indexOfFirstOrderBook= indexOfLastOrderBook - recordsPerPage;
 const currentOrderBooks= records?.slice(indexOfFirstOrderBook, indexOfLastOrderBook);
 
 //To get the num of pages as per the records shown
-const numberOfPages= Math.ceil(records.length/recordsPerPage);
+const numberOfPages= Math.ceil(records/recordsPerPage);
 
 const handlePrevPage =() => {
     if(currentPage >1){
@@ -110,7 +116,7 @@ const handlePrevPage =() => {
              </div>
            
         <div className='table-wrapper'>
-    {records?.length >0 ?
+    {records ?
             (<table className='table'>
 
                 <thead>
@@ -359,7 +365,7 @@ const handlePrevPage =() => {
              </table>):(<h2 className='data-error'>No Records Found</h2>)
 }
         </div>
-        {records.length >0 ? (<Pagination currentPage={currentPage} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage}/>):""}
+        {records ? (<Pagination currentPage={currentPage} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage}/>):""}
     </div>
     );
 

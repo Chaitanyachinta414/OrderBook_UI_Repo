@@ -6,7 +6,6 @@ const Search = () => {
     
     let [searchRecords, setSearchRecords]= useState({});
     let [recordsData,setRecordsData] = useState({});
-
     const handlecancelSearch =() => {
         setSearchRecords({});
         document.querySelectorAll("input").forEach((input) => {
@@ -22,17 +21,25 @@ const Search = () => {
    
     const isValid = Object.keys(searchRecords).length;
     const handleSearch = () => {
+        let tempStr = localStorage.getItem("LoginJSON");
+        let tempObj = JSON.parse(tempStr);
+        
         if(isValid > 0){
-            fetch("http://localhost:8080/search",
-            {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(searchRecords)
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                setRecordsData(data)
-            })
+            if(tempObj!= null) {
+                fetch("http://localhost:8080/search",
+                    {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(searchRecords)
+                    })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        setRecordsData(data)
+                    })
+            }
+            else {
+                setRecordsData([])
+            }
         }
         else {
             alert('Please fill all fields');
@@ -144,7 +151,7 @@ const Search = () => {
                 <button type="button" onClick={handlecancelSearch} className='cancel-btn'>Cancel</button>
             </form>
             {recordsData?.length >0? 
-                <SearchResults SearchJSON={searchRecords} SearchDisplayRecords={recordsData} SetSearchDisplayRecords = {(newVal) => setRecordsData(newVal)}/>:""}
+                <SearchResults SearchJSON={searchRecords} SearchDisplayRecords={recordsData}/>:""}
             {searchRecords.length !== 0 && recordsData?.length === 0 ?  (<h2 className='data-error'>No Search Results Found</h2>):"" }
            
         </div>

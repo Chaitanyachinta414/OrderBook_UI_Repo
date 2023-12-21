@@ -44,7 +44,7 @@ a {
   margin-top: 15px;
   color: #000;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 17px;
   display: flex;
   justify-content: center;
   border-radius: 50%;
@@ -290,4 +290,10 @@ a {
   background: none;
   font-weight: 600;
   font-size: 16px;
+}
+.about-us p {
+  margin: 0 auto;
+  width: 70%;
+  text-indent: 100px;
+  margin-bottom: 20px;
 }
