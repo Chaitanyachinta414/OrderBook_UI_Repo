@@ -8,6 +8,7 @@ const Header = () => {
     const handleLogOut = () => {
         localStorage.setItem("OrderbookRecords", null);
         localStorage.setItem("LoginJSON", null);
+        alert("Logout Successfully.");
     }
 
     return (

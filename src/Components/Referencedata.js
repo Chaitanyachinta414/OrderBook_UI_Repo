@@ -31,7 +31,7 @@ const ReferenceData = () => {
                 localStorage.setItem("OrderbookRecords",objValue);
             })
         } else {
-            setRecords(null);
+            setRecords([]);
         }
     // eslint-disable-next-line 
     },[]);
@@ -42,15 +42,21 @@ const ReferenceData = () => {
         navigate('/updaterecords')
         
     }
-    const handleDelete =(item) => {
-        fetch("http://localhost:8080/deleteOrderbook/"+item.id,
+    const handleDelete =(id) => {
+        fetch("http://localhost:8080/deleteOrderbook/"+id,
             {
                 method:'DELETE'
             })
-            .then((res) => res.json())
-            .then((data) => {
-                setRecords(data)
-            })
+            .then((res) => {
+                if (res.ok) {
+                  const updatedrecords = records.filter((records) => records.id !== id);
+                  setRecords(updatedrecords);
+                  alert("Row "+id+" Deleted Successfully")
+                }
+              })
+              .catch((error) => {
+                console.error("Error deleting row:", error);
+              });
 
     }   
 //Get Current Page 
@@ -116,7 +122,7 @@ const handlePrevPage =() => {
              </div>
            
         <div className='table-wrapper'>
-    {records ?
+    {records.length > 0 ?
             (<table className='table'>
 
                 <thead>
@@ -357,7 +363,7 @@ const handlePrevPage =() => {
 
 
                             <td  ><span className='actions' onClick={() => handleEdit(item)}><BsFillPencilFill /></span></td>
-                            <td  ><span className='actions' onClick={() => handleDelete(item)}><BsFillXOctagonFill /></span></td>
+                            <td  ><span className='actions' onClick={() => handleDelete(item.id)}><BsFillXOctagonFill /></span></td>
                         </tr>
                     ))}
 
@@ -365,7 +371,7 @@ const handlePrevPage =() => {
              </table>):(<h2 className='data-error'>No Records Found</h2>)
 }
         </div>
-        {records ? (<Pagination currentPage={currentPage} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage}/>):""}
+        {records.length > 0 ? (<Pagination currentPage={currentPage} handlePrevPage={handlePrevPage} handleNextPage={handleNextPage}/>):""}
     </div>
     );
 
