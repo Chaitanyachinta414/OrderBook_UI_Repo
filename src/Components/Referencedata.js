@@ -68,7 +68,7 @@ const indexOfFirstOrderBook= indexOfLastOrderBook - recordsPerPage;
 const currentOrderBooks= records?.slice(indexOfFirstOrderBook, indexOfLastOrderBook);
 
 //To get the num of pages as per the records shown
-const numberOfPages= Math.ceil(records/recordsPerPage);
+const numberOfPages= Math.ceil(records.length/recordsPerPage);
 
 const handlePrevPage =() => {
     if(currentPage >1){

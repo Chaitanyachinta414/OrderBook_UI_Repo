@@ -6,7 +6,7 @@ const About = () => {
             <Header />
              <h1 className='header'>About Us</h1>
              <p>An order book comes with a table of data consisting of GE projects related data. 
-                most of the order books come with a visual demonstration as well. 
+                Most of the order books come with a visual demonstration as well. 
                 In this way, the reader can quickly achieve an overall understanding of market demand and Related information.</p>
 
                 <p> This website stores project-related information in CSV format.
